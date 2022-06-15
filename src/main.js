@@ -11,8 +11,6 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 import { firebaseapp } from './firebase'
 
-console.log(firebaseapp)
-
 const app = createApp(App)
 
 app.use(createPinia())
