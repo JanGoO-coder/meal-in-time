@@ -1,14 +1,17 @@
 <script setup>
-import { RouterView } from 'vue-router'
-import MyNavbar from './components/MyNavbar.vue';
+import { computed } from 'vue'
+import { RouterView, useRoute } from 'vue-router'
+import MyNavbar from './components/MyNavbar.vue'
 
+const currentRoute = computed(() => {
+  return useRoute().path
+})
 </script>
 
 <template>
-  <MyNavbar />
+  <MyNavbar v-if="currentRoute != '/signin'" />
   <RouterView />
 </template>
 
 <style>
-
 </style>

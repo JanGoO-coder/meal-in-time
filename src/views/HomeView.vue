@@ -1,7 +1,67 @@
 <script setup>
+import MyBigBtn from '../components/MyBigBtn.vue';
 
+import { ref } from 'vue'
+
+const orderManagementSelected = ref(false)
+const tableManagementSelected = ref(false)
+const menuManagementSelected = ref(false)
+
+const onClickOrderManagement = () => {
+    orderManagementSelected.value = true
+    tableManagementSelected.value = false
+    menuManagementSelected.value = false
+}
+
+const onClickTableManagement = () => {
+    orderManagementSelected.value = false
+    tableManagementSelected.value = true
+    menuManagementSelected.value = false
+}
+
+const onClickMenuManagement = () => {
+    orderManagementSelected.value = false
+    tableManagementSelected.value = false
+    menuManagementSelected.value = true
+}
 </script>
 
 <template>
-  
+    <div class="w-full py-12 container flex gap-3 justify-start items-center">
+        <button @click="this.$router.go(this.$router.currentRoute)"
+            v-show="orderManagementSelected || tableManagementSelected || menuManagementSelected"
+            class="btn btn-dark !rounded-full" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+        </button>
+        <h1 class="display-6">Management Options</h1>
+    </div>
+    <div
+        class="transition-all duration-500 container mx-auto p-12 !shadow-lg border-2 bg-white border-transparent hover:border-gray-700 hover:!shadow-xl rounded-xl">
+        <div v-if="!orderManagementSelected && !tableManagementSelected && !menuManagementSelected"
+            class="w-full flex gap-7 justify-center items-center">
+            <MyBigBtn @click="onClickOrderManagement" btnText="Order Management" btnImage="/images/burger.svg" />
+            <MyBigBtn @click="onClickTableManagement" btnText="Table Management" btnImage="/images/table.svg" />
+            <MyBigBtn @click="onClickMenuManagement" btnText="Menu Management" btnImage="/images/menu.svg" />
+        </div>
+        <div v-else-if="orderManagementSelected" class="w-full flex gap-7 justify-center items-center">
+            <MyBigBtn btnText="Pending Order" btnImage="/images/Pending.svg" />
+            <MyBigBtn btnText="Recived Order" btnImage="/images/received.svg" />
+            <MyBigBtn btnText="Completed Order" btnImage="/images/complete.svg" />
+        </div>
+        <div v-else-if="tableManagementSelected" class="w-full flex gap-7 justify-center items-center">
+            <MyBigBtn btnText="View Tables" btnImage="/images/view.svg" />
+            <MyBigBtn btnText="Add Table" btnImage="/images/add.svg" />
+            <MyBigBtn btnText="Edit Table" btnImage="/images/edit.svg" />
+            <MyBigBtn btnText="Delete Table" btnImage="/images/delete.svg" />
+        </div>
+        <div v-else-if="menuManagementSelected" class="w-full flex gap-7 justify-center items-center">
+            <MyBigBtn btnText="View Menu" btnImage="/images/view.svg" />
+            <MyBigBtn btnText="Add Menu" btnImage="/images/add.svg" />
+            <MyBigBtn btnText="Edit Menu" btnImage="/images/edit.svg" />
+            <MyBigBtn btnText="Delete Menu" btnImage="/images/delete.svg" />
+        </div>
+    </div>
 </template>
