@@ -1,10 +1,10 @@
 <script setup>
 import { computed } from 'vue'
-import { RouterView, useRoute } from 'vue-router'
+import { RouterView, useRouter } from 'vue-router'
 import MyNavbar from './components/MyNavbar.vue'
 
 const currentRoute = computed(() => {
-  return useRoute().path
+  return useRouter().currentRoute.value.fullPath
 })
 </script>
 

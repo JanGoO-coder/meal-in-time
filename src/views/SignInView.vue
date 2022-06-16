@@ -1,6 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useAdminStore } from '../stores/admin'
+import { useRouter } from 'vue-router'
 
 const email = ref('')
 const password = ref('')
@@ -9,9 +10,17 @@ const admin = useAdminStore()
 const user = ref({})
 
 const authenticate = async () => {
+    admin.loading = true
     user.value = await admin.signin(email.value, password.value)
-    console.log(await user.value)
 }
+
+onMounted(() => {
+    if (admin.user.displayName != null) {
+        useRouter().push({ path: '/' })
+    } else {
+        useRouter().push({ path: '/signin' })
+    }
+})
 </script>
 
 <template>
@@ -24,10 +33,16 @@ const authenticate = async () => {
                 <label for="emailInput">Email address</label>
             </div>
             <div class="form-floating mb-3 w-full">
-                <input type="password" class="form-control" id="passwordInput" v-model="password" placeholder="123456789">
+                <input type="password" class="form-control" id="passwordInput" v-model="password"
+                    placeholder="123456789">
                 <label for="passwordInput">Password</label>
             </div>
-            <button @click="authenticate" type="button" class="btn btn-warning p-3 w-full mt-3">Sign In</button>
+            <button @click="authenticate" type="button" class="btn btn-warning p-3 w-full mt-3">
+                <span v-if="!admin.loading">Sign In</span>
+                <span v-else class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </span>
+            </button>
         </div>
     </div>
 </template>

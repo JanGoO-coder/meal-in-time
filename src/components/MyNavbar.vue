@@ -1,3 +1,9 @@
+<script setup>
+import { useAdminStore } from '../stores/admin'
+
+const userStore = useAdminStore()
+</script>
+
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-orange-400 !text-lg !font-bold">
         <div class="container">
@@ -38,7 +44,7 @@
                     <li class="nav-item dropdown !relative">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                            @{{ userStore.user.displayName }}
                         </a>
                         <ul class="dropdown-menu !absolute !left-auto !right-0" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -46,7 +52,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a @click="userStore.logout" class="dropdown-item" href="#">Sign Out</a></li>
                         </ul>
                     </li>
                 </ul>

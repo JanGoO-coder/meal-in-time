@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 
 export const useAdminStore = defineStore({
   id: 'admin',
@@ -8,9 +8,25 @@ export const useAdminStore = defineStore({
       uid: null,
       email: null,
       displayName: null
-    }
+    },
+    loading: false
   }),
   actions: {
+    setToken() {
+      window.localStorage.setItem('token', this.user.uid)
+      window.localStorage.setItem('name', this.user.displayName)
+      window.localStorage.setItem('email', this.user.email)
+    },
+    getToken() {
+      this.user.uid = window.localStorage.getItem('token')
+      this.user.displayName = window.localStorage.getItem('name')
+      this.user.email = window.localStorage.getItem('email')
+    },
+    removeToken() {
+      window.localStorage.removeItem('name')
+      window.localStorage.removeItem('token')
+      window.localStorage.removeItem('email')
+    },
     async signin(email, password) {
       const auth = getAuth()
       console.log(email, password)
@@ -20,13 +36,23 @@ export const useAdminStore = defineStore({
           this.user.uid = user.uid
           this.user.email = user.email
           this.user.displayName = user.email.split('@')[0]
-
-          return this.user
+          this.setToken()
+          this.loading = false
+          this.$router.push({ path: '/' })
         })
         .catch((error) => {
           const errorCode = error.code
           const errorMessage = error.message
         })
+    },
+    logout() {
+      const auth = getAuth()
+      signOut(auth).then(() => {
+        this.removeToken()
+        window.location.reload()
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   }
 })
