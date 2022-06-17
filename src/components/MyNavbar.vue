@@ -18,23 +18,22 @@ const userStore = useAdminStore()
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <router-link to="/" class="nav-link active" aria-current="page">Home</router-link>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                            Tables
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
+                            <li><a href="/tables" class="dropdown-item">View Tables</a></li>
+                            <li><a href="/add-table" class="dropdown-item">Add Table</a></li>
+                            <li><a href="/edit-table" class="dropdown-item">Edit Table</a></li>
+                            <li><a href="/remove-table" class="dropdown-item">Remove Table</a></li>
+                            <!-- <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                         </ul>
                     </li>
                 </ul>

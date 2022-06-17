@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
 const app = createApp(App)
+
 const pinia = createPinia()
 
 pinia.use(({ store }) => {

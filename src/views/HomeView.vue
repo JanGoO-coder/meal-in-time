@@ -3,11 +3,13 @@ import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import MyBigBtn from '../components/MyBigBtn.vue'
 import { useAdminStore } from '../stores/admin'
+import { useTableStore } from '../stores/table'
 
 
 import { ref } from 'vue'
 
 const userStore = useAdminStore()
+const tableStore = useTableStore()
 
 const orderManagementSelected = ref(false)
 const tableManagementSelected = ref(false)
@@ -31,6 +33,10 @@ const onClickMenuManagement = () => {
     menuManagementSelected.value = true
 }
 
+const goBack = () => {
+    window.location.reload()
+}
+
 onMounted(() => {
     userStore.getToken()
     if (userStore.user.uid != null) {
@@ -43,8 +49,7 @@ onMounted(() => {
 
 <template>
     <div class="w-full py-12 container flex gap-3 justify-start items-center">
-        <button @click="this.$router.go(this.$router.currentRoute)"
-            v-show="orderManagementSelected || tableManagementSelected || menuManagementSelected"
+        <button @click="goBack" v-show="orderManagementSelected || tableManagementSelected || menuManagementSelected"
             class="btn btn-dark !rounded-full" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
@@ -53,8 +58,7 @@ onMounted(() => {
         </button>
         <h1 class="display-6">Management Options</h1>
     </div>
-    <div
-        class="transition-all duration-500 container mx-auto p-12 !shadow-md bg-white hover:!shadow-xl rounded-2xl">
+    <div class="transition-all duration-500 container mx-auto p-12 !shadow-md bg-white hover:!shadow-xl rounded-2xl">
         <div v-if="!orderManagementSelected && !tableManagementSelected && !menuManagementSelected"
             class="w-full flex flex-wrap gap-7 justify-center items-center">
             <MyBigBtn @click="onClickOrderManagement" btnText="Order Management" btnImage="/images/burger.svg" />
@@ -67,10 +71,18 @@ onMounted(() => {
             <MyBigBtn btnText="Completed Order" btnImage="/images/complete.svg" />
         </div>
         <div v-else-if="tableManagementSelected" class="w-full flex flex-wrap gap-7 justify-center items-center">
-            <MyBigBtn btnText="View Tables" btnImage="/images/view.svg" />
-            <MyBigBtn btnText="Add Table" btnImage="/images/add.svg" />
-            <MyBigBtn btnText="Edit Table" btnImage="/images/edit.svg" />
-            <MyBigBtn btnText="Delete Table" btnImage="/images/delete.svg" />
+            <a href="/tables">
+                <MyBigBtn btnText="View Tables" btnImage="/images/view.svg" />
+            </a>
+            <a href="/add-table">
+                <MyBigBtn btnText="Add Table" btnImage="/images/add.svg" />
+            </a>
+            <a href="/edit-table">
+                <MyBigBtn btnText="Edit Table" btnImage="/images/edit.svg" />
+            </a>
+            <a href="/remove-table">
+                <MyBigBtn btnText="Remove Table" btnImage="/images/delete.svg" />
+            </a>
         </div>
         <div v-else-if="menuManagementSelected" class="w-full flex flex-wrap gap-7 justify-center items-center">
             <MyBigBtn btnText="View Menu" btnImage="/images/view.svg" />
