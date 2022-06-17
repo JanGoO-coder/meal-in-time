@@ -29,13 +29,13 @@ export const useTableStore = defineStore({
                 available: data.available
             })
             this.loading = false
-            window.location.href = '/tables'
+            this.$router.push({ path: '/tables' })
         },
         async removeTableData(tid) {
             const db = getFirestore(firebaseapp)
             await deleteDoc(doc(db, 'tables', tid))
             this.loading = false
-            window.location.href = '/tables'
+            this.$router.push({ path: '/tables' })
         },
         async editTableData(tid, data) {
             const db = getFirestore(firebaseapp)
@@ -46,7 +46,7 @@ export const useTableStore = defineStore({
                 available: data.available
             })
             this.loading = false
-            window.location.href = '/tables'
+            this.$router.push({ path: '/tables' })
         }
     }
 })

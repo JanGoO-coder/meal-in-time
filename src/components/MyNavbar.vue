@@ -26,10 +26,10 @@ const userStore = useAdminStore()
                             Tables
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="/tables" class="dropdown-item">View Tables</a></li>
-                            <li><a href="/add-table" class="dropdown-item">Add Table</a></li>
-                            <li><a href="/edit-table" class="dropdown-item">Edit Table</a></li>
-                            <li><a href="/remove-table" class="dropdown-item">Remove Table</a></li>
+                            <li><router-link to="/tables" class="dropdown-item">View Tables</router-link></li>
+                            <li><router-link to="/add-table" class="dropdown-item">Add Table</router-link></li>
+                            <li><router-link to="/edit-table" class="dropdown-item">Edit Table</router-link></li>
+                            <li><router-link to="/remove-table" class="dropdown-item">Remove Table</router-link></li>
                             <!-- <li>
                                 <hr class="dropdown-divider">
                             </li>

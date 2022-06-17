@@ -71,18 +71,18 @@ onMounted(() => {
             <MyBigBtn btnText="Completed Order" btnImage="/images/complete.svg" />
         </div>
         <div v-else-if="tableManagementSelected" class="w-full flex flex-wrap gap-7 justify-center items-center">
-            <a href="/tables">
+            <router-link to="/tables">
                 <MyBigBtn btnText="View Tables" btnImage="/images/view.svg" />
-            </a>
-            <a href="/add-table">
+            </router-link>
+            <router-link to="/add-table">
                 <MyBigBtn btnText="Add Table" btnImage="/images/add.svg" />
-            </a>
-            <a href="/edit-table">
+            </router-link>
+            <router-link to="/edit-table">
                 <MyBigBtn btnText="Edit Table" btnImage="/images/edit.svg" />
-            </a>
-            <a href="/remove-table">
+            </router-link>
+            <router-link to="/remove-table">
                 <MyBigBtn btnText="Remove Table" btnImage="/images/delete.svg" />
-            </a>
+            </router-link>
         </div>
         <div v-else-if="menuManagementSelected" class="w-full flex flex-wrap gap-7 justify-center items-center">
             <MyBigBtn btnText="View Menu" btnImage="/images/view.svg" />
