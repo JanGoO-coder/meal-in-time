@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SignInView from '../views/SignInView.vue'
 import ViewTableView from '../views/ViewTableView.vue'
@@ -7,7 +7,8 @@ import EditTableView from '../views/EditTableView.vue'
 import RemoveTableView from '../views/RemoveTableView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',
