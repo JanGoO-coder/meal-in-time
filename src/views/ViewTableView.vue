@@ -19,11 +19,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="py-12 container-fluid md:container flex flex-col gap-3 justify-start items-center md:!w-1/2">
+    <div class="py-12 container flex flex-col gap-3 justify-start items-center">
         <h1 class="display-6">Tables</h1>
         <div
-            class="transition-all duration-500 container md:mx-auto p-6 !shadow-md bg-white hover:!shadow-xl rounded-2xl">
-            <table class="table">
+            class="transition-all duration-500 rounded-2xl w-full lg:w-1/2">
+            <table class="table text-sm md:text-lg">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -38,7 +38,7 @@ onMounted(() => {
                     <tr v-for="(tbl, index) in tableStore.tables" :key="index">
                         <th scope="row">{{ index + 1 }}</th>
                         <th scope="row">{{ tbl.data.id }}</th>
-                        <th scope="row">{{ tbl.key }}</th>
+                        <th scope="row" class="truncate text-ellipsis max-w-[5ch] md:max-w-[20ch]">{{ tbl.key }}</th>
                         <td>{{ tbl.data.seats }}</td>
                         <td>{{ tbl.data.reserved ? "Yes" : "No" }}</td>
                         <td>{{ tbl.data.available ? "Yes" : "No" }}</td>
