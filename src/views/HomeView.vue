@@ -54,7 +54,7 @@ onMounted(() => {
         <h1 class="display-6">Management Options</h1>
     </div>
     <div
-        class="transition-all duration-500 container mx-auto p-12 !shadow-lg border-2 bg-white border-transparent hover:border-gray-700 hover:!shadow-xl rounded-xl">
+        class="transition-all duration-500 container mx-auto p-12 !shadow-md bg-white hover:!shadow-xl rounded-2xl">
         <div v-if="!orderManagementSelected && !tableManagementSelected && !menuManagementSelected"
             class="w-full flex flex-wrap gap-7 justify-center items-center">
             <MyBigBtn @click="onClickOrderManagement" btnText="Order Management" btnImage="/images/burger.svg" />
