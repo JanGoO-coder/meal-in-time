@@ -8,7 +8,7 @@ const userStore = useAdminStore()
     <nav class="navbar navbar-expand-lg navbar-light bg-gradient-to-b from-orange-300 to-orange-400 py-3 !text-lg !font-bold shadow-2xl">
         <div class="container">
             <a class="navbar-brand me-4" href="#">
-                <img class="h-12 rounded-full" src="../assets/logo.JPG" alt="Meal In Time Logo">
+                <img class="h-12 rounded-full" src="../assets/meal-in-time-logo.png" alt="Meal In Time Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

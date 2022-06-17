@@ -26,7 +26,7 @@ onMounted(() => {
 <template>
     <div class="w-screen h-screen flex justify-center items-center">
         <div class="relative flex flex-col justify-center items-center w-96 p-6 rounded-lg bg-white shadow-lg">
-            <img src="../assets/logo.JPG" class="w-32" alt="Meal In Time Logo">
+            <img src="../assets/meal-in-time-logo.png" class="w-32" alt="Meal In Time Logo">
             <h1 class="display-6 mb-3 py-3">Sign In</h1>
             <div class="form-floating mb-3 w-full">
                 <input type="email" class="form-control" id="emailInput" v-model="email" placeholder="name@example.com">
