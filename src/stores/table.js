@@ -10,6 +10,7 @@ export const useTableStore = defineStore({
     }),
     actions: {
         async readTablesData() {
+            this.tables = []
             const db = getFirestore(firebaseapp)
             const querySnapshot = await getDocs(collection(db, "tables"));
             querySnapshot.forEach((doc) => {
@@ -17,7 +18,6 @@ export const useTableStore = defineStore({
                     'key': doc.id,
                     'data': doc.data()
                 })
-                console.log(this.tables[0])
             })
         },
         async addNewTableData(data) {
