@@ -12,6 +12,8 @@ import AddMenuView from '../views/menu/AddMenuView.vue'
 import EditMenuView from '../views/menu/EditMenuView.vue'
 import RemoveMenuView from '../views/menu/RemoveMenuView.vue'
 
+import _404View from '../views/404View.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -64,6 +66,10 @@ const router = createRouter({
       path: '/remove-menu',
       name: "RemoveMenu",
       component: RemoveMenuView
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      component: _404View
     }
   ]
 })
