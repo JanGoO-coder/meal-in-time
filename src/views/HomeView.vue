@@ -85,10 +85,18 @@ onMounted(() => {
             </router-link>
         </div>
         <div v-else-if="menuManagementSelected" class="w-full flex flex-wrap gap-7 justify-center items-center">
-            <MyBigBtn btnText="View Menu" btnImage="/images/view.svg" />
-            <MyBigBtn btnText="Add Menu" btnImage="/images/add.svg" />
-            <MyBigBtn btnText="Edit Menu" btnImage="/images/edit.svg" />
-            <MyBigBtn btnText="Delete Menu" btnImage="/images/delete.svg" />
+            <router-link to="/menu">
+                <MyBigBtn btnText="View Menu" btnImage="/images/view.svg" />
+            </router-link>
+            <router-link to="/add-menu">
+                <MyBigBtn btnText="Add Menu" btnImage="/images/add.svg" />
+            </router-link>
+            <router-link to="/edit-menu">
+                <MyBigBtn btnText="Edit Menu" btnImage="/images/edit.svg" />
+            </router-link>
+            <router-link to="/remove-menu">
+                <MyBigBtn btnText="Delete Menu" btnImage="/images/delete.svg" />
+            </router-link>
         </div>
     </div>
 </template>

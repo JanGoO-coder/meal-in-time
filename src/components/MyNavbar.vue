@@ -19,7 +19,7 @@ const userStore = useAdminStore()
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <router-link to="/" class="nav-link active" aria-current="page">Home</router-link>
+                        <router-link to="/" class="nav-link active" aria-current="page">Dashboard</router-link>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -50,10 +50,10 @@ const userStore = useAdminStore()
                             Menu
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><router-link to="/" class="dropdown-item">View Menu</router-link></li>
-                            <li><router-link to="/" class="dropdown-item">Add Menu Item</router-link></li>
-                            <li><router-link to="/" class="dropdown-item">Edit Menu Item</router-link></li>
-                            <li><router-link to="/" class="dropdown-item">Remove Menu Item</router-link></li>
+                            <li><router-link to="/menu" class="dropdown-item">View Menu</router-link></li>
+                            <li><router-link to="/add-menu" class="dropdown-item">Add Menu Item</router-link></li>
+                            <li><router-link to="/edit-menu" class="dropdown-item">Edit Menu Item</router-link></li>
+                            <li><router-link to="/remove-menu" class="dropdown-item">Remove Menu Item</router-link></li>
                         </ul>
                     </li>
                 </ul>

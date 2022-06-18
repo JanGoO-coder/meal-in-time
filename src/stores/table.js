@@ -10,6 +10,7 @@ export const useTableStore = defineStore({
     }),
     actions: {
         async readTablesData() {
+            this.loading = true
             this.tables = []
             const db = getFirestore(firebaseapp)
             const querySnapshot = await getDocs(collection(db, "tables"));
@@ -19,6 +20,7 @@ export const useTableStore = defineStore({
                     'data': doc.data()
                 })
             })
+            this.loading = false
         },
         async addNewTableData(data) {
             const db = getFirestore(firebaseapp)

@@ -21,30 +21,35 @@ onMounted(() => {
 <template>
     <div class="py-12 container flex flex-col gap-3 justify-start items-center">
         <h1 class="display-6">Tables</h1>
-        <div
-            class="transition-all duration-500 rounded-2xl w-full lg:w-1/2">
+        <div v-if="tableStore.tables.length > 0" class="transition-all duration-500 rounded-2xl w-full lg:w-1/2">
             <table class="table text-sm md:text-lg">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Id</th>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Id</th>
                         <th scope="col">TID</th>
-                        <th scope="col">Seats</th>
-                        <th scope="col">Reserved</th>
-                        <th scope="col">Available</th>
+                        <th scope="col" class="text-center">Seats</th>
+                        <th scope="col" class="text-center">Reserved</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(tbl, index) in tableStore.tables" :key="index">
-                        <th scope="row">{{ index + 1 }}</th>
-                        <th scope="row">{{ tbl.data.id }}</th>
-                        <th scope="row" class="truncate text-ellipsis max-w-[5ch] md:max-w-[20ch]">{{ tbl.key }}</th>
-                        <td>{{ tbl.data.seats }}</td>
-                        <td>{{ tbl.data.reserved ? "Yes" : "No" }}</td>
-                        <td>{{ tbl.data.available ? "Yes" : "No" }}</td>
+                        <th scope="row" class="text-center">{{ index + 1 }}</th>
+                        <th scope="row" class="text-center">{{ tbl.data.id }}</th>
+                        <th scope="row" class="truncate text-ellipsis max-w-[5ch] md:max-w-[48ch]">{{ tbl.key }}</th>
+                        <td class="text-center">{{ tbl.data.seats }}</td>
+                        <td class="text-center">{{ tbl.data.reserved ? "Yes" : "No" }}</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div v-else-if="tableStore.loading">
+            <span class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </span>
+        </div>
+        <div v-else>
+            <h1 class="text-slate-500 font-extralight">There is nothing to show here.</h1>
         </div>
     </div>
 </template>

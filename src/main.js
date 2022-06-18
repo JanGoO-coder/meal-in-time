@@ -5,7 +5,6 @@ import App from './App.vue'
 import router from './router'
 
 import { firebaseapp } from './firebase'
-console.log(firebaseapp)
 
 import './index.css'
 
