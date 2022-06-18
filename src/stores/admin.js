@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
 
 export const useAdminStore = defineStore({
   id: 'admin',
@@ -44,6 +44,23 @@ export const useAdminStore = defineStore({
           const errorCode = error.code
           const errorMessage = error.message
         })
+    },
+    async checkAuth() {
+      const auth = getAuth()
+      await onAuthStateChanged(auth, (user) => {
+        if (user) {
+          this.user.uid = user.uid
+          this.user.email = user.email
+          this.user.displayName = user.email.split('@')[0]
+          this.setToken()
+          this.loading = false
+          this.$router.push({ path: '/' })
+        } else {
+          this.removeToken()
+          this.loading = false
+          this.$router.push({ path: '/signin' })
+        }
+      })
     },
     logout() {
       const auth = getAuth()
