@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SignInView from '../views/SignInView.vue'
-import ViewTableView from '../views/ViewTableView.vue'
-import AddTableView from '../views/AddTableView.vue'
-import EditTableView from '../views/EditTableView.vue'
-import RemoveTableView from '../views/RemoveTableView.vue'
+
+import ViewTableView from '../views/table/ViewTableView.vue'
+import AddTableView from '../views/table/AddTableView.vue'
+import EditTableView from '../views/table/EditTableView.vue'
+import RemoveTableView from '../views/table/RemoveTableView.vue'
 
 import ViewMenuView from '../views/menu/ViewMenuView.vue'
 import AddMenuView from '../views/menu/AddMenuView.vue'

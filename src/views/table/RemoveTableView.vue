@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { useAdminStore } from '../stores/admin'
-import { useTableStore } from '../stores/table'
+import { useAdminStore } from '../../stores/admin'
+import { useTableStore } from '../../stores/table'
 
 const tableStore = useTableStore()
 const userStore = useAdminStore()
