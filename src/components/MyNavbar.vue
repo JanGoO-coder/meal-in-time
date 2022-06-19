@@ -7,10 +7,10 @@ const userStore = useAdminStore()
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-gradient-to-b from-orange-300 to-orange-400 py-3 !text-lg !font-bold shadow-2xl">
         <div class="container">
-            <a class="navbar-brand me-5 flex gap-2 justify-center items-center" href="#">
+            <router-link to="/" class="navbar-brand me-5 flex gap-2 justify-center items-center" href="#">
                 <img class="h-12 rounded-full" src="../assets/meal-in-time-logo.png" alt="Meal In Time Logo">
                 <span class="!leading-5 !text-lg font-medium text-gray-800">Meal <br> InTime</span>
-            </a>
+            </router-link>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -56,6 +56,9 @@ const userStore = useAdminStore()
                             <li><router-link to="/remove-menu" class="dropdown-item">Remove Menu Item</router-link></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <router-link to="/catagories" class="nav-link" aria-current="page">Catagories</router-link>
+                    </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item dropdown !relative">
@@ -64,8 +67,8 @@ const userStore = useAdminStore()
                             @{{ userStore.user.displayName }}
                         </a>
                         <ul class="dropdown-menu !absolute !left-auto !right-0" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><router-link to="/menu" class="dropdown-item">Food Menu</router-link></li>
+                            <li><router-link to="/tables" class="dropdown-item">Customer Tables</router-link></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

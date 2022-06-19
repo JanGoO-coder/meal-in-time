@@ -11,6 +11,7 @@ const userStore = useAdminStore()
 const title = ref("")
 const detail = ref("")
 const price = ref("")
+const catagory = ref("")
 
 onMounted(() => {
     menuStore.readMenuData()
@@ -32,6 +33,7 @@ const onClickAddMenuItem = () => {
     const data = {
         'title': title.value,
         'image': menuStore.image,
+        'detail': catagory.value,
         'price': price.value,
         'detail': detail.value
     }

@@ -15,7 +15,7 @@ export const useMenuStore = defineStore({
             this.loading = true
             this.menu = []
             const db = getFirestore(firebaseapp)
-            const querySnapshot = await getDocs(collection(db, "menu"));
+            const querySnapshot = await getDocs(collection(db, "menuItems"));
             querySnapshot.forEach((doc) => {
                 this.menu.push({
                     'key': doc.id,
@@ -37,11 +37,11 @@ export const useMenuStore = defineStore({
         },
         async addNewMenuItem(data) {
             const db = getFirestore(firebaseapp)
-            await addDoc(collection(db, "menu"), {
-                title: data.title,
-                image: data.image,
+            await addDoc(collection(db, "menuItems"), {
+                itemName: data.title,
+                imageSrc: data.image,
                 price: data.price,
-                detail: data.detail
+                description: data.detail
             })
             this.loading = false
             this.image = ''

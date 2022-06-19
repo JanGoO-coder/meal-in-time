@@ -23,10 +23,10 @@ onMounted(() => {
         <h1 class="display-6">Menu</h1>
         <div v-if="menuStore.menu.length > 0" class="flex gap-2 flex-wrap items-start justify-center">
             <div v-for="(menu, index) in menuStore.menu" :key="menu.key" class="card" style="width: 18rem;">
-                <img :src="menu.data.image" class="card-img-top object-cover h-48" :alt="`Product: [${ menu.key }]`">
+                <img :src="menu.data.imageSrc" class="card-img-top object-cover h-48" :alt="`Product: [${ menu.key }]`">
                 <div class="card-body">
-                    <h5 class="card-title">{{ menu.data.title }}</h5>
-                    <p class="card-text line-clamp-3">{{ menu.data.detail }}</p>
+                    <h5 class="card-title">{{ menu.data.itemName }}</h5>
+                    <p class="card-text line-clamp-3">{{ menu.data.description }}</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Price: {{ menu.data.price }} <span class="text-sm">pkr</span></li>
