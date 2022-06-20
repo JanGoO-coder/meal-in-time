@@ -45,6 +45,8 @@ onMounted(() => {
                                 <th scope="col" class="text-center">NO</th>
                                 <th scope="col" class="text-center">Order</th>
                                 <th scope="col" class="text-center">Order ID</th>
+                                <th scope="col" class="text-center">User Email</th>
+                                <th scope="col" class="text-center">UID</th>
                                 <th scope="col" class="text-center">Status</th>
                                 <th scope="col" class="text-center">Total Price</th>
                             </tr>
@@ -61,6 +63,8 @@ onMounted(() => {
                                     </ul>
                                 </td>
                                 <td scope="row" class="text-center">{{ takeAway.key }}</td>
+                                <td class="text-center">{{ takeAway.data.email }}</td>
+                                <td class="text-center">{{ takeAway.data.uId }}</td>
                                 <td class="text-center">{{ takeAway.data.orderStatus }}</td>
                                 <td class="text-center">{{ takeAway.data.totalAmount }}</td>
                             </tr>
@@ -74,6 +78,8 @@ onMounted(() => {
                                 <th scope="col" class="text-center">NO</th>
                                 <th scope="col" class="text-center">Order</th>
                                 <th scope="col" class="text-center">Table ID</th>
+                                <th scope="col" class="text-center">User Email</th>
+                                <th scope="col" class="text-center">UID</th>
                                 <th scope="col" class="text-center">Status</th>
                                 <th scope="col" class="text-center">Total Price</th>
                             </tr>
@@ -88,6 +94,8 @@ onMounted(() => {
                                     </ul>
                                 </td>
                                 <td class="text-center">{{ tableBook.data.tableId }}</td>
+                                <td class="text-center">{{ tableBook.data.email }}</td>
+                                <td class="text-center">{{ tableBook.data.uId }}</td>
                                 <td class="text-center">{{ tableBook.data.orderStatus }}</td>
                                 <td class="text-center">{{ tableBook.data.totalAmount }}</td>
                             </tr>
