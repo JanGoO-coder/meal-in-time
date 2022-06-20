@@ -15,7 +15,7 @@ onMounted(() => {
     } else {
         useRouter().push({ path: '/signin' })
     }
-})
+}) 
 </script>
 
 <template>
@@ -25,20 +25,18 @@ onMounted(() => {
             <table class="table text-sm md:text-lg">
                 <thead>
                     <tr>
-                        <th scope="col" class="text-center">#</th>
-                        <th scope="col" class="text-center">Id</th>
-                        <th scope="col">TID</th>
+                        <th scope="col" class="text-center">NO</th>
+                        <th scope="col" class="text-center">TID</th>
                         <th scope="col" class="text-center">Seats</th>
-                        <th scope="col" class="text-center">Reserved</th>
+                        <th scope="col" class="text-center">Available</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(tbl, index) in tableStore.tables" :key="index">
-                        <th scope="row" class="text-center">{{ index + 1 }}</th>
-                        <th scope="row" class="text-center">{{ tbl.data.id }}</th>
+                        <th scope="row" class="text-center">{{ tbl.data.tNo }}</th>
                         <th scope="row" class="truncate text-ellipsis max-w-[5ch] md:max-w-[48ch]">{{ tbl.key }}</th>
-                        <td class="text-center">{{ tbl.data.seats }}</td>
-                        <td class="text-center">{{ tbl.data.reserved ? "Yes" : "No" }}</td>
+                        <td class="text-center">{{ tbl.data.seat }}</td>
+                        <td class="text-center">{{ tbl.data.available ? "Yes" : "No" }}</td>
                     </tr>
                 </tbody>
             </table>

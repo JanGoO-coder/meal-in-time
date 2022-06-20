@@ -13,7 +13,7 @@ export const useTableStore = defineStore({
             this.loading = true
             this.tables = []
             const db = getFirestore(firebaseapp)
-            const querySnapshot = await getDocs(collection(db, "tables"));
+            const querySnapshot = await getDocs(collection(db, "table"));
             querySnapshot.forEach((doc) => {
                 this.tables.push({
                     'key': doc.id,
@@ -24,10 +24,9 @@ export const useTableStore = defineStore({
         },
         async addNewTableData(data) {
             const db = getFirestore(firebaseapp)
-            await addDoc(collection(db, "tables"), {
-                id: data.no,
-                seats: data.seats,
-                reserved: data.reserved,
+            await addDoc(collection(db, "table"), {
+                tNo: data.tNo,
+                seat: data.seat,
                 available: data.available
             })
             this.loading = false
@@ -35,16 +34,15 @@ export const useTableStore = defineStore({
         },
         async removeTableData(tid) {
             const db = getFirestore(firebaseapp)
-            await deleteDoc(doc(db, 'tables', tid))
+            await deleteDoc(doc(db, 'table', tid))
             this.loading = false
             this.$router.push({ path: '/tables' })
         },
         async editTableData(tid, data) {
             const db = getFirestore(firebaseapp)
-            await setDoc(doc(db, "tables", tid.value), {
-                id: data.no,
-                seats: data.seats,
-                reserved: data.reserved,
+            await setDoc(doc(db, "table", tid), {
+                tNo: data.tNo,
+                seat: data.seat,
                 available: data.available
             })
             this.loading = false

@@ -40,6 +40,7 @@ export const useMenuStore = defineStore({
             await addDoc(collection(db, "menuItems"), {
                 itemName: data.title,
                 imageSrc: data.image,
+                category: data.catagory,
                 price: data.price,
                 description: data.detail
             })
@@ -48,19 +49,21 @@ export const useMenuStore = defineStore({
             this.$router.push({ path: '/menu' })
         },
         async removeMenuItem(itemid) {
+            console.log(itemid)
             const db = getFirestore(firebaseapp)
-            await deleteDoc(doc(db, 'menu', itemid))
+            await deleteDoc(doc(db, 'menuItems', itemid))
             this.loading = false
             this.$router.push({ path: '/menu' })
         },
         async editMenuItem(pid, data) {
             console.log(pid, data)
             const db = getFirestore(firebaseapp)
-            await setDoc(doc(db, "menu", pid), {
-                title: data.title,
-                image: data.image,
+            await setDoc(doc(db, "menuItems", pid), {
+                itemName: data.title,
+                imageSrc: data.image,
+                catagory: data.catagory,
                 price: data.price,
-                detail: data.detail
+                description: data.detail
             })
             this.loading = false
             this.$router.push({ path: '/menu' })

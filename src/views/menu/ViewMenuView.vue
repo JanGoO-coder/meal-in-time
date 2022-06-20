@@ -31,6 +31,7 @@ onMounted(() => {
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Price: {{ menu.data.price }} <span class="text-sm">pkr</span></li>
                     <li class="list-group-item">PID: {{ menu.key }}</li>
+                    <li class="list-group-item">Catagory: {{ menu.data.category }}</li>
                 </ul>
                 <div class="card-body">
                     <a href="#" class="btn btn-warning w-full card-link">View Details</a>

@@ -30,8 +30,11 @@ const onClickRemoveMenu = () => {
         <h1 class="display-6">Remove Menu Item</h1>
         <div class="flex flex-col gap-3 transition-all duration-500 w-full mx-auto p-6 !shadow-md bg-white hover:!shadow-xl rounded-2xl">
             <div class="form-floating">
-                <input type="text" class="form-control" id="pid" v-model="pid" placeholder="Product ID [PID]">
-                <label for="tid">Product ID [PID]</label>
+                <select class="form-select" id="pid" v-model="pid" aria-label="pid">
+                    <option value="" selected>Select Product Id [PID]</option>
+                    <option v-for="(item, index) in menuStore.menu" :key="index" :value="item.key">{{ item.key }}</option>
+                </select>
+                <label for="pid">Select Product Id [PID]</label>
             </div>
             <button @click="onClickRemoveMenu" type="button" class="btn btn-warning p-3 w-full mt-3">
                 <span v-if="!menuStore.loading">Remove Menu Item</span>

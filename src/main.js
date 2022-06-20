@@ -4,8 +4,6 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import { firebaseapp } from './firebase'
-
 import './index.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css'

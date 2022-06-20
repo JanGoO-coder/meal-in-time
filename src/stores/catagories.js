@@ -23,28 +23,36 @@ export const useCatagoryStore = defineStore({
 
             this.loading = false
         },
-        async addNewCatagoryItem(data) {
+        async addNewCatagoryItem(cName) {
             const db = getFirestore(firebaseapp)
             await addDoc(collection(db, "foodCategories"), {
-                categoryName: data.categoryName
+                categoryName: cName
             })
             this.loading = false
-            this.$router.push({ path: '/catagories' })
+            this.$router.push({ path: '/' })
+            setTimeout(() => {
+                this.$router.push({ path: '/catagories' })
+            }, 100)
         },
         async removeCatagoryItem(cid) {
             const db = getFirestore(firebaseapp)
             await deleteDoc(doc(db, 'foodCategories', cid))
             this.loading = false
-            this.$router.push({ path: '/catagories' })
+            this.$router.push({ path: '/' })
+            setTimeout(() => {
+                this.$router.push({ path: '/catagories' })
+            }, 500)
         },
-        async editCatagoryItem(cid, data) {
-            console.log(cid, data)
+        async editCatagoryItem(cid, cName) {
             const db = getFirestore(firebaseapp)
-            await setDoc(doc(db, "foodCategories", pid), {
-                categoryName: data.categoryName
+            await setDoc(doc(db, "foodCategories", cid), {
+                categoryName: cName
             })
             this.loading = false
-            this.$router.push({ path: '/catagories' })
+            this.$router.push({ path: '/' })
+            setTimeout(() => {
+                this.$router.push({ path: '/catagories' })
+            }, 500)
         }
     }
 })

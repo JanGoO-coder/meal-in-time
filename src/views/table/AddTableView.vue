@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAdminStore } from '../../stores/admin'
 import { useTableStore } from '../../stores/table'
@@ -9,18 +9,7 @@ const userStore = useAdminStore()
 
 const no = ref(0)
 const seats = ref(4)
-const reserved = ref(false)
 const available = ref(true)
-
-watch(reserved, (newReserved) => {
-    available.value = !available.value
-    if (available.value == newReserved) { available.value = !available.value }
-})
-
-watch(available, (newAvailable) => {
-    reserved.value = !reserved.value
-    if (reserved.value == newAvailable) { reserved.value = !reserved.value }
-})
 
 onMounted(() => {
     tableStore.readTablesData()
@@ -34,9 +23,8 @@ onMounted(() => {
 
 const onClickAddTable = () => {
     const data = {
-        'no': no.value,
-        'seats': seats.value,
-        'reserved': reserved.value,
+        'tNo': no.value,
+        'seat': seats.value,
         'available': available.value
     }
     tableStore.loading = true
@@ -63,14 +51,6 @@ const onClickAddTable = () => {
                     <option value="6">Six Seats</option>
                 </select>
                 <label for="seats">Works with selects</label>
-            </div>
-            <div class="form-floating">
-                <select class="form-select" id="reserved" v-model="reserved" aria-label="Seats">
-                    <option selected>Table is Reserved Or Not</option>
-                    <option value="true">Yes Table is Reserved</option>
-                    <option value="false">No Table is not Reserved</option>
-                </select>
-                <label for="reserved">Works with selects</label>
             </div>
             <div class="form-floating">
                 <select class="form-select" id="available" v-model="available" aria-label="Seats">
