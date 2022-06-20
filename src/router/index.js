@@ -16,6 +16,7 @@ import ViewCatagoryView from '../views/catagory/ViewCatagoryView.vue'
 
 import PendingOrderView from '../views/order/PendingOrderView.vue'
 import RecievedOrderView from '../views/order/RecievedOrderView.vue'
+import OngoingOrderView from '../views/order/OngoingOrderView.vue'
 import CompletedOrderView from '../views/order/CompletedOrderView.vue'
 
 import _404View from '../views/404View.vue'
@@ -87,6 +88,11 @@ const router = createRouter({
       path: '/received-orders',
       name: 'RecievedOrder',
       component: RecievedOrderView
+    },
+    {
+      path: '/ongoing-orders',
+      name: 'OngoingOrder',
+      component: OngoingOrderView
     },
     {
       path: '/completed-orders',

@@ -72,6 +72,9 @@ onMounted(() => {
             <router-link to="/received-orders">
                 <MyBigBtn btnText="Recived Order" btnImage="/images/received.svg" />
             </router-link>
+            <router-link to="/ongoing-orders">
+                <MyBigBtn btnText="On-Going Order" btnImage="/images/ongoing.svg" />
+            </router-link>
             <router-link to="/completed-orders">
                 <MyBigBtn btnText="Completed Order" btnImage="/images/complete.svg" />
             </router-link>

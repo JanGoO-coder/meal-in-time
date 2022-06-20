@@ -43,6 +43,10 @@ export const useOrderStore = defineStore({
                 orderStatus: '' + status
             })
             this.loading = false
+            this.$router.push({ path: '/' })
+            setTimeout(() => {
+                this.$router.push({ path: '/' + status.toLowerCase() + '-orders' })
+            }, 500)
         },
         async updateTableBookingOrderStatus(orderId, status) {
             this.loading = true
@@ -51,32 +55,10 @@ export const useOrderStore = defineStore({
                 orderStatus: '' + status
             })
             this.loading = false
-        },
-        async addNewTableData(data) {
-            const db = getFirestore(firebaseapp)
-            await addDoc(collection(db, "table"), {
-                tNo: data.tNo,
-                seat: data.seat,
-                available: data.available
-            })
-            this.loading = false
-            this.$router.push({ path: '/tables' })
-        },
-        async removeTableData(tid) {
-            const db = getFirestore(firebaseapp)
-            await deleteDoc(doc(db, 'table', tid))
-            this.loading = false
-            this.$router.push({ path: '/tables' })
-        },
-        async editTableData(tid, data) {
-            const db = getFirestore(firebaseapp)
-            await setDoc(doc(db, "table", tid), {
-                tNo: data.tNo,
-                seat: data.seat,
-                available: data.available
-            })
-            this.loading = false
-            this.$router.push({ path: '/tables' })
+            this.$router.push({ path: '/' })
+            setTimeout(() => {
+                this.$router.push({ path: '/' + status.toLowerCase() + '-orders' })
+            }, 500)
         }
     }
 })

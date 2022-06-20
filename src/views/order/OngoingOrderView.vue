@@ -12,7 +12,7 @@ onMounted(() => {
     orderStore.readTableBookingOrdersData()
     orderStore.readTakeAwayOrdersData()
     if (userStore.user.uid != null) {
-        useRouter().push({ path: '/received-orders' })
+        useRouter().push({ path: '/ongoing-orders' })
     } else {
         useRouter().push({ path: '/signin' })
     }
@@ -30,19 +30,19 @@ const updateTableBookingOrderStatus = (orderId, status) => {
 <template>
     <div class="container py-16">
         <div class="flex flex-row justify-between items-center">
-            <h1 class="display-6 pb-8">Received Orders</h1>
+            <h1 class="display-6 pb-8">On-Going Orders</h1>
         </div>
         <div>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item me-2" role="presentation">
                     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                        aria-selected="true">Take Away Received Orders</button>
+                        aria-selected="true">Take Away On-Going Orders</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                        aria-selected="false">Table Booking Recived Orders</button>
+                        aria-selected="false">Table Booking On-Going Orders</button>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -60,7 +60,7 @@ const updateTableBookingOrderStatus = (orderId, status) => {
                         </thead>
                         <tbody>
                             <tr v-for="(takeAway, index) in orderStore.takeAwayOrders" :key="index"
-                                v-show="takeAway.data.orderStatus == 'Received'">
+                                v-show="takeAway.data.orderStatus == 'Ongoing'">
                                 <th scope="row" class="text-center">{{ index + 1 }}</th>
                                 <td scope="row" class="truncate text-ellipsis max-w-[5ch] md:max-w-[48ch]">
                                     <ul class="list-group">
@@ -74,7 +74,7 @@ const updateTableBookingOrderStatus = (orderId, status) => {
                                 <td class="text-center">{{ takeAway.data.totalAmount }}</td>
                                 <td class="flex justify-end gap-2">
                                     <button class="btn btn-success"
-                                        @click="orderStore.updateTakeAwayOrderStatus(takeAway.key, 'Ongoing')">
+                                        @click="orderStore.updateTakeAwayOrderStatus(takeAway.key, 'Completed')">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -106,7 +106,7 @@ const updateTableBookingOrderStatus = (orderId, status) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(tableBook, index) in orderStore.tableBookingOrders" :key="index" v-show="tableBook.data.orderStatus == 'Received'">
+                            <tr v-for="(tableBook, index) in orderStore.tableBookingOrders" :key="index" v-show="tableBook.data.orderStatus == 'Ongoing'">
                                 <th scope="row" class="text-center">{{ index + 1 }}</th>
                                 <td scope="row" class="truncate text-ellipsis max-w-[5ch] md:max-w-[48ch]">
                                     <ul class="list-group">
@@ -119,7 +119,7 @@ const updateTableBookingOrderStatus = (orderId, status) => {
                                 <td class="text-center">{{ tableBook.data.totalAmount }}</td>
                                 <td class="flex justify-end gap-2">
                                     <button class="btn btn-success"
-                                        @click="orderStore.updateTableBookingOrderStatus(tableBook.key, 'Ongoing')">
+                                        @click="orderStore.updateTableBookingOrderStatus(tableBook.key, 'Completed')">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
