@@ -26,7 +26,7 @@ export const useTableStore = defineStore({
             const db = getFirestore(firebaseapp)
             await addDoc(collection(db, "table"), {
                 tNo: data.tNo,
-                seat: data.seat,
+                seat: +data.seat,
                 available: data.available
             })
             this.loading = false
@@ -42,7 +42,7 @@ export const useTableStore = defineStore({
             const db = getFirestore(firebaseapp)
             await setDoc(doc(db, "table", tid), {
                 tNo: data.tNo,
-                seat: data.seat,
+                seat: +data.seat,
                 available: data.available
             })
             this.loading = false

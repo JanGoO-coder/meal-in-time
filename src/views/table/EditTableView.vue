@@ -23,10 +23,11 @@ onMounted(() => {
 })
 
 const onClickEditTable = () => {
+    let flag = available.value == '1' ? true : false;
     const data = {
         'tNo': no.value,
         'seat': seats.value,
-        'available': available.value
+        'available': flag
     }
     tableStore.loading = true
     tableStore.editTableData(tid.value, data)
@@ -63,8 +64,8 @@ const onClickEditTable = () => {
             <div class="form-floating">
                 <select class="form-select" id="available" v-model="available" aria-label="Seats">
                     <option selected>Table is Available Or Not</option>
-                    <option value="true">Yes Table is Available</option>
-                    <option value="false">No Table is not Available</option>
+                    <option value="1">Yes Table is Available</option>
+                    <option value="0">No Table is not Available</option>
                 </select>
                 <label for="available">Works with selects</label>
             </div>

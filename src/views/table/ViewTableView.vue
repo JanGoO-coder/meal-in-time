@@ -26,7 +26,7 @@ onMounted(() => {
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">NO</th>
-                        <th scope="col" class="text-center">TID</th>
+                        <th scope="col" class="text-left">TID</th>
                         <th scope="col" class="text-center">Seats</th>
                         <th scope="col" class="text-center">Available</th>
                     </tr>
