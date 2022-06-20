@@ -27,9 +27,9 @@ const userStore = useAdminStore()
                             Orders
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><router-link to="/" class="dropdown-item">Pending Orders</router-link></li>
-                            <li><router-link to="/" class="dropdown-item">Recived Orders</router-link></li>
-                            <li><router-link to="/" class="dropdown-item">Completed Orders</router-link></li>
+                            <li><router-link to="/pending-orders" class="dropdown-item">Pending Orders</router-link></li>
+                            <li><router-link to="/received-orders" class="dropdown-item">Recived Orders</router-link></li>
+                            <li><router-link to="/completed-orders" class="dropdown-item">Completed Orders</router-link></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

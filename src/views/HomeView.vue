@@ -66,9 +66,15 @@ onMounted(() => {
             <MyBigBtn @click="onClickMenuManagement" btnText="Menu Management" btnImage="/images/menu.svg" />
         </div>
         <div v-else-if="orderManagementSelected" class="w-full flex flex-wrap gap-7 justify-center items-center">
-            <MyBigBtn btnText="Pending Order" btnImage="/images/Pending.svg" />
-            <MyBigBtn btnText="Recived Order" btnImage="/images/received.svg" />
-            <MyBigBtn btnText="Completed Order" btnImage="/images/complete.svg" />
+            <router-link to="/pending-orders">
+                <MyBigBtn btnText="Pending Order" btnImage="/images/Pending.svg" />
+            </router-link>
+            <router-link to="/received-orders">
+                <MyBigBtn btnText="Recived Order" btnImage="/images/received.svg" />
+            </router-link>
+            <router-link to="/completed-orders">
+                <MyBigBtn btnText="Completed Order" btnImage="/images/complete.svg" />
+            </router-link>
         </div>
         <div v-else-if="tableManagementSelected" class="w-full flex flex-wrap gap-7 justify-center items-center">
             <router-link to="/tables">

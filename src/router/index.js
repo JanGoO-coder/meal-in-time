@@ -14,6 +14,10 @@ import RemoveMenuView from '../views/menu/RemoveMenuView.vue'
 
 import ViewCatagoryView from '../views/catagory/ViewCatagoryView.vue'
 
+import PendingOrderView from '../views/order/PendingOrderView.vue'
+import RecievedOrderView from '../views/order/RecievedOrderView.vue'
+import CompletedOrderView from '../views/order/CompletedOrderView.vue'
+
 import _404View from '../views/404View.vue'
 
 const router = createRouter({
@@ -73,6 +77,21 @@ const router = createRouter({
       path: '/catagories',
       name: 'ViewCatagories',
       component: ViewCatagoryView
+    },
+    {
+      path: '/pending-orders',
+      name: 'PendingOrder',
+      component: PendingOrderView
+    },
+    {
+      path: '/received-orders',
+      name: 'RecievedOrder',
+      component: RecievedOrderView
+    },
+    {
+      path: '/completed-orders',
+      name: 'CompletedOrder',
+      component: CompletedOrderView
     },
     {
       path: '/:pathMatch(.*)*',
