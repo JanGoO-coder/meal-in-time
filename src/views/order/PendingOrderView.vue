@@ -64,7 +64,7 @@ const updateTableBookingOrderStatus = (orderId, status) => {
                                 <th scope="row" class="text-center">{{ index + 1 }}</th>
                                 <td scope="row" class="truncate text-ellipsis max-w-[5ch] md:max-w-[48ch]">
                                     <ul class="list-group">
-                                        <li v-for="(item, i) in takeAway.data.order" :key="i" class="list-group-item">{{
+                                        <li v-for="(item, i) in takeAway.data.order" :key="i" class="list-group-item list-group-item-secondary">{{
                                                 item.itemName
                                         }} | {{ item.itemQuantity }} | {{ item.price }}</li>
                                     </ul>
