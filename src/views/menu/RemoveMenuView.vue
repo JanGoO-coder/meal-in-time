@@ -10,13 +10,9 @@ const userStore = useAdminStore()
 const pid = ref("")
 
 onMounted(() => {
+    userStore.checkAuth('/remove-menu')
     menuStore.readMenuData()
     userStore.getToken()
-    if (userStore.user.uid != null) {
-        useRouter().push({ path: '/remove-menu' })
-    } else {
-        useRouter().push({ path: '/signin' })
-    }
 })
 
 const onClickRemoveMenu = () => {

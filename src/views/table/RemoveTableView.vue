@@ -10,13 +10,9 @@ const userStore = useAdminStore()
 const tid = ref("")
 
 onMounted(() => {
+    userStore.checkAuth('/remove-table')
     tableStore.readTablesData()
     userStore.getToken()
-    if (userStore.user.uid != null) {
-        useRouter().push({ path: '/remove-table' })
-    } else {
-        useRouter().push({ path: '/signin' })
-    }
 })
 
 const onClickRemoveTable = () => {

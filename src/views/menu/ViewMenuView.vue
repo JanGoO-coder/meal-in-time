@@ -8,13 +8,9 @@ const menuStore = useMenuStore()
 const userStore = useAdminStore()
 
 onMounted(() => {
+    userStore.checkAuth('/menu')
     menuStore.readMenuData()
     userStore.getToken()
-    if (userStore.user.uid != null) {
-        useRouter().push({ path: '/menu' })
-    } else {
-        useRouter().push({ path: '/signin' })
-    }
 })
 </script>
 

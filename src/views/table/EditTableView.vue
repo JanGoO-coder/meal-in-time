@@ -13,13 +13,9 @@ const seats = ref(4)
 const available = ref(true)
 
 onMounted(() => {
+    userStore.checkAuth('/edit-table')
     tableStore.readTablesData()
     userStore.getToken()
-    if (userStore.user.uid != null) {
-        useRouter().push({ path: '/edit-table' })
-    } else {
-        useRouter().push({ path: '/signin' })
-    }
 })
 
 const onClickEditTable = () => {

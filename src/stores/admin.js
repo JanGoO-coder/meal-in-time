@@ -29,7 +29,6 @@ export const useAdminStore = defineStore({
     },
     async signin(email, password) {
       const auth = getAuth()
-      console.log(email, password)
       await signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user
@@ -45,8 +44,9 @@ export const useAdminStore = defineStore({
           const errorMessage = error.message
         })
     },
-    async checkAuth() {
+    async checkAuth(pathStr) {
       const auth = getAuth()
+      this.getToken()
       await onAuthStateChanged(auth, (user) => {
         if (user) {
           this.user.uid = user.uid
@@ -54,7 +54,7 @@ export const useAdminStore = defineStore({
           this.user.displayName = user.email.split('@')[0]
           this.setToken()
           this.loading = false
-          this.$router.push({ path: '/' })
+          this.$router.push({ path: pathStr })
         } else {
           this.removeToken()
           this.loading = false

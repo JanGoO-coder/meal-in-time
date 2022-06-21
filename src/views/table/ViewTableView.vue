@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onBeforeMount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAdminStore } from '../../stores/admin'
 import { useTableStore } from '../../stores/table'
@@ -7,15 +7,11 @@ import { useTableStore } from '../../stores/table'
 const tableStore = useTableStore()
 const userStore = useAdminStore()
 
-onMounted(() => {
+onBeforeMount(() => {
+    userStore.checkAuth('/tables')
     tableStore.readTablesData()
     userStore.getToken()
-    if (userStore.user.uid != null) {
-        useRouter().push({ path: '/tables' })
-    } else {
-        useRouter().push({ path: '/signin' })
-    }
-}) 
+})
 </script>
 
 <template>

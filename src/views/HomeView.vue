@@ -38,12 +38,7 @@ const goBack = () => {
 }
 
 onMounted(() => {
-    userStore.getToken()
-    if (userStore.user.uid != null) {
-        useRouter().push({ path: '/' })
-    } else {
-        useRouter().push({ path: '/signin' })
-    }
+    userStore.checkAuth('/')
 })
 </script>
 

@@ -11,14 +11,10 @@ const catagoryName = ref('')
 const edit_cid = ref('')
 
 onBeforeMount(() => {
+    userStore.checkAuth('/catagories')
     catagoryStore.catagroies = []
     catagoryStore.readCatagoryData()
     userStore.getToken()
-    if (userStore.user.uid != null) {
-        useRouter().push({ path: '/catagories' })
-    } else {
-        useRouter().push({ path: '/signin' })
-    }
 })
 
 const onClickAddNewCatagory = () => {

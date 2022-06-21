@@ -16,16 +16,11 @@ const price = ref("")
 const catagory = ref("")
 
 onMounted(() => {
+    userStore.checkAuth('/edit-menu')
     menuStore.readMenuData()
     catagoryStore.catagroies = []
     catagoryStore.readCatagoryData()
     userStore.getToken()
-
-    if (userStore.user.uid != null) {
-        useRouter().push({ path: '/edit-menu' })
-    } else {
-        useRouter().push({ path: '/signin' })
-    }
 })
 
 const getFile = async () => {

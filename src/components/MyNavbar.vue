@@ -68,8 +68,7 @@ const userStore = useAdminStore()
                             @{{ userStore.user.displayName }}
                         </a>
                         <ul class="dropdown-menu !absolute !left-auto !right-0" aria-labelledby="navbarDropdown">
-                            <li><router-link to="/menu" class="dropdown-item">Food Menu</router-link></li>
-                            <li><router-link to="/tables" class="dropdown-item">Customer Tables</router-link></li>
+                            <li><router-link to="/customers" class="dropdown-item">Customers</router-link></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

@@ -9,10 +9,6 @@ const adminStore = useAdminStore()
 const currentRoute = computed(() => {
   return useRouter().currentRoute.value.fullPath
 })
-
-onMounted(() => {
-  adminStore.checkAuth()
-})
 </script>
 
 <template>

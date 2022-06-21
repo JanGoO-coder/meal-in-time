@@ -19,6 +19,8 @@ import RecievedOrderView from '../views/order/RecievedOrderView.vue'
 import OngoingOrderView from '../views/order/OngoingOrderView.vue'
 import CompletedOrderView from '../views/order/CompletedOrderView.vue'
 
+import customersView from '../views/customersView.vue'
+
 import _404View from '../views/404View.vue'
 
 const router = createRouter({
@@ -100,10 +102,20 @@ const router = createRouter({
       component: CompletedOrderView
     },
     {
+      path: '/customers',
+      name: 'customers',
+      component: customersView
+    },
+    {
       path: '/:pathMatch(.*)*',
       component: _404View
     }
   ]
 })
+
+// router.beforeEach((to, from, next) => {
+//   console.log(to, from, next)
+//   next()
+// })
 
 export default router

@@ -8,14 +8,10 @@ const userStore = useAdminStore()
 const orderStore = useOrderStore()
 
 onMounted(() => {
+    userStore.checkAuth('/received-orders')
     userStore.getToken()
     orderStore.readTableBookingOrdersData()
     orderStore.readTakeAwayOrdersData()
-    if (userStore.user.uid != null) {
-        useRouter().push({ path: '/received-orders' })
-    } else {
-        useRouter().push({ path: '/signin' })
-    }
 })
 
 const updateTakeAwayOrderStatus = (orderId, status) => {
