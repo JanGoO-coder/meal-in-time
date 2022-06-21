@@ -74,7 +74,7 @@ const updateTableBookingOrderStatus = (orderId, status) => {
                                 <td class="text-center">{{ takeAway.data.totalAmount }}</td>
                                 <td class="flex justify-end gap-2">
                                     <button class="btn btn-success"
-                                        @click="orderStore.updateTakeAwayOrderStatus(takeAway.key, 'Ongoing')">
+                                        @click="orderStore.updateTakeAwayOrderStatus(takeAway.key, 'Ready')">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -99,7 +99,7 @@ const updateTableBookingOrderStatus = (orderId, status) => {
                             <tr>
                                 <th scope="col" class="text-center">NO</th>
                                 <th scope="col" class="text-center">Order</th>
-                                <th scope="col" class="text-center">Table ID</th>
+                                <th scope="col" class="text-center">Table</th>
                                 <th scope="col" class="text-center">User Email</th>
                                 <th scope="col" class="text-center">UID</th>
                                 <th scope="col" class="text-center">Status</th>
@@ -116,21 +116,27 @@ const updateTableBookingOrderStatus = (orderId, status) => {
                                             {{ item.itemName }} | {{ item.itemQuantity }} | {{ item.price }}</li>
                                     </ul>
                                 </td>
-                                <td class="text-center">{{ tableBook.data.tableId }}</td>
+                                <td scope="row" class="truncate text-ellipsis max-w-[5ch] md:max-w-[48ch]">
+                                    <ul class="list-group">
+                                        <li class="list-group-item list-group-item-secondary">{{
+                                                    tableBook.data.tableId
+                                            }} | {{ tableBook.data.tNo }} | {{ tableBook.data.seat }}</li>
+                                    </ul>
+                                </td>
                                 <td class="text-center">{{ tableBook.data.email }}</td>
                                 <td class="text-center">{{ tableBook.data.uId }}</td>
                                 <td class="text-center">{{ tableBook.data.orderStatus }}</td>
                                 <td class="text-center">{{ tableBook.data.totalAmount }}</td>
                                 <td class="flex justify-end gap-2">
                                     <button class="btn btn-success"
-                                        @click="orderStore.updateTableBookingOrderStatus(tableBook.key, 'Ongoing')">
+                                        @click="orderStore.updateTableBookingOrderStatus(tableBook.key, tableBook.data.tableId, 'Ready')">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                         </svg>
                                     </button>
                                     <button class="btn btn-danger"
-                                        @click="orderStore.updateTableBookingOrderStatus(tableBook.key, 'Cancelled')">
+                                        @click="orderStore.updateTableBookingOrderStatus(tableBook.key, tableBook.data.tableId, 'Cancelled')">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round"

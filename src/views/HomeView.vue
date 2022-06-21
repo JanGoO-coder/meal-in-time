@@ -67,11 +67,14 @@ onMounted(() => {
             <router-link to="/received-orders">
                 <MyBigBtn btnText="Recived Order" btnImage="/images/received.svg" />
             </router-link>
-            <router-link to="/ongoing-orders">
-                <MyBigBtn btnText="On-Going Order" btnImage="/images/ongoing.svg" />
+            <router-link to="/ready-orders">
+                <MyBigBtn btnText="Ready Order" btnImage="/images/ready.svg" />
             </router-link>
             <router-link to="/completed-orders">
                 <MyBigBtn btnText="Completed Order" btnImage="/images/complete.svg" />
+            </router-link>
+            <router-link to="/cancelled-orders">
+                <MyBigBtn btnText="Cancelled Order" btnImage="/images/cancelled.svg" />
             </router-link>
         </div>
         <div v-else-if="tableManagementSelected" class="w-full flex flex-wrap gap-7 justify-center items-center">

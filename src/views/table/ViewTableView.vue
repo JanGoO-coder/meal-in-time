@@ -32,7 +32,7 @@ onBeforeMount(() => {
                         <th scope="row" class="text-center">{{ tbl.data.tNo }}</th>
                         <th scope="row" class="truncate text-ellipsis max-w-[5ch] md:max-w-[48ch]">{{ tbl.key }}</th>
                         <td class="text-center">{{ tbl.data.seat }}</td>
-                        <td class="text-center">{{ tbl.data.available ? "Yes" : "No" }}</td>
+                        <td class="text-center">{{ tbl.data.available ? "No" : "Yes" }}</td>
                     </tr>
                 </tbody>
             </table>

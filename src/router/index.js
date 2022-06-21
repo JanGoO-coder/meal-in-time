@@ -16,8 +16,9 @@ import ViewCatagoryView from '../views/catagory/ViewCatagoryView.vue'
 
 import PendingOrderView from '../views/order/PendingOrderView.vue'
 import RecievedOrderView from '../views/order/RecievedOrderView.vue'
-import OngoingOrderView from '../views/order/OngoingOrderView.vue'
+import ReadyOrderView from '../views/order/ReadyOrderView.vue'
 import CompletedOrderView from '../views/order/CompletedOrderView.vue'
+import CancelledOrderView from '../views/order/CancelledOrderView.vue'
 
 import customersView from '../views/customersView.vue'
 
@@ -92,14 +93,19 @@ const router = createRouter({
       component: RecievedOrderView
     },
     {
-      path: '/ongoing-orders',
-      name: 'OngoingOrder',
-      component: OngoingOrderView
+      path: '/ready-orders',
+      name: 'ReadyOrder',
+      component: ReadyOrderView
     },
     {
       path: '/completed-orders',
       name: 'CompletedOrder',
       component: CompletedOrderView
+    },
+    {
+      path: '/cancelled-orders',
+      name: 'CancelledOrder',
+      component: CancelledOrderView
     },
     {
       path: '/customers',
@@ -112,10 +118,5 @@ const router = createRouter({
     }
   ]
 })
-
-// router.beforeEach((to, from, next) => {
-//   console.log(to, from, next)
-//   next()
-// })
 
 export default router

@@ -18,7 +18,7 @@ onMounted(() => {
 })
 
 const onClickAddTable = () => {
-    let flag = available.value == '1' ? true : false;
+    let flag = available.value == '1' ? false : true;
     const data = {
         'tNo': no.value,
         'seat': seats.value,
@@ -34,7 +34,7 @@ const onClickAddTable = () => {
         <h1 class="display-6">Add Table</h1>
         <div class="flex flex-col gap-3 transition-all duration-500 w-full mx-auto p-6 !shadow-md bg-white hover:!shadow-xl rounded-2xl">
             <div class="form-floating">
-                <input type="number" class="form-control" id="tbl_no" v-model="no" placeholder="Table Number">
+                <input type="number" class="form-control" id="tbl_no" v-model="no" placeholder="Table Number" min="0">
                 <label for="tbl_no">Table Number</label>
             </div>
             <div class="form-floating">
@@ -51,7 +51,7 @@ const onClickAddTable = () => {
             </div>
             <div class="form-floating">
                 <select class="form-select" id="available" v-model="available" aria-label="Seats">
-                    <option selected>Table is Available Or Not</option>
+                    <option selected value="true">Table is Available Or Not</option>
                     <option value="1">Yes Table is Available</option>
                     <option value="0">No Table is not Available</option>
                 </select>

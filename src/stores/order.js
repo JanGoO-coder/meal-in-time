@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { firebaseapp } from '../firebase'
 import { getFirestore, doc, collection, getDocs, addDoc, setDoc, deleteDoc, updateDoc } from "firebase/firestore"
+import { useTableStore } from './table'
 
 export const useOrderStore = defineStore({
     id: 'order',
@@ -34,6 +35,7 @@ export const useOrderStore = defineStore({
                     'data': doc.data()
                 })
             })
+
             this.loading = false
         },
         async updateTakeAwayOrderStatus(orderId, status) {
@@ -42,18 +44,27 @@ export const useOrderStore = defineStore({
             await updateDoc(doc(db, "takeAwayOrders", orderId), {
                 orderStatus: '' + status
             })
+
             this.loading = false
             this.$router.push({ path: '/' })
             setTimeout(() => {
                 this.$router.push({ path: '/' + status.toLowerCase() + '-orders' })
             }, 500)
         },
-        async updateTableBookingOrderStatus(orderId, status) {
+        async updateTableBookingOrderStatus(orderId, tableId, status) {
             this.loading = true
             const db = getFirestore(firebaseapp)
             await updateDoc(doc(db, "tableBookingOrder", orderId), {
                 orderStatus: '' + status
             })
+
+            if (status.toLowerCase() == 'completed' || status.toLowerCase() == 'cancelled') {
+                console.log(tableId)
+                await updateDoc(doc(db, "table", tableId), {
+                    available: false
+                })
+            }
+
             this.loading = false
             this.$router.push({ path: '/' })
             setTimeout(() => {
